@@ -1,0 +1,372 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* 平滑捲動 */
+}
+
+body {
+    font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff8fc;
+    margin: 0;
+}
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+
+.btn {
+    display: inline-block;
+    background: #ffbbd0;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 187, 208, 0.4);
+    /* 啟動跳動動畫 */
+    animation: heartBeat 2s infinite ease-in-out;
+}
+
+.btn:hover {
+    background: #ff9fb9;
+    animation: none; /* 滑鼠移上去時停止跳動，方便點擊 */
+    transform: translateY(-3px);
+}
+
+/* --- 作品集：點擊與懸浮變化 --- */
+.work-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 250px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.work-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 點擊時的縮小感 */
+.work-item:active {
+    transform: scale(0.95);
+    transition: 0.1s;
+}
+
+/* 懸浮時的遮罩與文字 */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 187, 208, 0.7); /* 改為半透明粉色 */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: 0.4s;
+    backdrop-filter: blur(3px); /* 增加磨砂玻璃質感 */
+}
+
+.work-item:hover .overlay {
+    opacity: 1;
+}
+
+/* --- 底部社群連結：粉色系優化 --- */
+footer {
+    text-align: center;
+    padding: 60px 20px;
+    background: #222; /* 改成深色，發光才明顯 */
+    color: #fff;
+}
+
+.social-links {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 讓 IG 發光 */
+.social-btn.ig {
+    color: #ffbbd0;
+    border: 2px solid #ffbbd0;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.social-btn.ig:hover {
+    background: #ffbbd0;
+    color: #fff;
+    box-shadow: 0 0 20px #ffbbd0, 0 0 40px #ffbbd0; /* 這裡就是發光的關鍵 */
+}
+
+/* 讓 FB 發光 */
+.social-btn.fb {
+    color: #3b5998;
+    border: 2px solid #3b5998;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.social-btn.fb:hover {
+    background: #3b5998;
+    color: #fff;
+    box-shadow: 0 0 20px #3b5998, 0 0 40px #3b5998; /* 藍色發光 */
+}
+
+.social-links {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-btn {
+    text-decoration: none;
+    color: #ffbbd0; /* 預設粉色文字 */
+    border: 1.5px solid #ffbbd0;
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+.social-btn:hover {
+    background: #ffbbd0;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 187, 208, 0.5);
+}
+
+.top a {
+    color: #888;
+    font-size: 0.8rem;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.top a:hover {
+    color: #ffbbd0;
+}
+
+/* 修正重複的 Profile Section 語法 */
+.profile-section {
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 導覽列 */
+nav {
+    background: #ffdfec;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+}
+
+/* 個人簡介區 */
+.profile-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* 圓形頭像 */
+    border: 5px solid #ffffff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    object-fit: cover;
+}
+
+.subtitle {
+    color: #888888;
+    font-size: 1.2rem;
+    margin-top: -10px;
+}
+
+.btn {
+    display: inline-block;
+    background: #ffbbd0;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ffd0f5;
+}
+
+/* 網格系統 */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.works {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.work-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 250px;
+}
+
+.work-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.work-item:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.work-item:hover .overlay {
+    opacity: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 60px 20px;
+    background: #222; /* 深色背景讓發光更明顯 */
+    color: #fff;
+}
+
+.social-links {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Instagram 發光效果 */
+.social-btn.ig {
+    color: #ffbbd0;
+    border: 2px solid #ffbbd0;
+}
+
+.social-btn.ig:hover {
+    background: #ffbbd0;
+    color: #fff;
+    box-shadow: 0 0 20px #ffbbd0, 0 0 40px #ffbbd0;
+    transform: translateY(-3px);
+}
+
+/* Facebook 發光效果 */
+.social-btn.fb {
+    color: #4267B2;
+    border: 2px solid #4267B2;
+}
+
+.social-btn.fb:hover {
+    background: #4267B2;
+    color: #fff;
+    box-shadow: 0 0 20px #4267B2, 0 0 40px #4267B2;
+    transform: translateY(-3px);
+}
+
+.top {
+    margin-top: 30px;
+}
+
+.top a {
+    color: #888;
+    font-size: 0.8rem;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.top a:hover {
+    color: #ffbbd0;
+}
+
+/* 確保按鈕區塊置中 */
+.buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;}
+    .profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+}
+
+/* 讓鼠標移上去時顯示是可以點擊的狀態 */
+.work-item {
+    cursor: pointer;
+    
+}
+
